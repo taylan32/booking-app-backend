@@ -8,7 +8,7 @@ module.exports = (err, req, res, next) => {
   logger.log({
     level: "error",
     messsage: {
-      error,
+      err,
       request: req,
     },
   });
