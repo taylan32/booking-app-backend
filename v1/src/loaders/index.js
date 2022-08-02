@@ -1,5 +1,5 @@
-const { connectDb } = require("./db")
+const { connectDB } = require("./db");
 
 module.exports = () => {
-    connectDb()
-}
+    connectDB();
+};
