@@ -4,10 +4,7 @@ const userLogger = require("../scripts/loggers/UserLogger");
 
 const UserSchema = new Schema(
   {
-    email: {
-      type: String,
-      unique: [true, "Email already exists."],
-    },
+    email: String,
     password: String,
     image: String,
     firstName: String,

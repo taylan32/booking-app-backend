@@ -16,9 +16,14 @@ const remove = (id) => {
   return User.findByIdAndDelete(id);
 };
 
+const findByEmail = (userEmail) => {
+  return User.findOne(userEmail);
+};
+
 module.exports = {
   list,
   findOne,
   modify,
   remove,
+  findByEmail
 };

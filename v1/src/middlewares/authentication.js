@@ -26,20 +26,21 @@ const authenticate = (req, res, next) => {
 const verifyAdmin = (req, res, next) => {
   if (!req.user.isAdmin) {
     return next(CustomError("Authorization denied.", httpStatus.FORBIDDEN));
+  } else {
+    next();
   }
-  next();
 };
 
 const verifyUser = (req, res, next) => {
   if (!(req.user._id === req.params.id || req.user.isAdmin)) {
     return next(CustomError("Authorization denied.", httpStatus.FORBIDDEN));
   } else {
-    next()
+    next();
   }
 };
 
 module.exports = {
   authenticate,
   verifyAdmin,
-  verifyUser
+  verifyUser,
 };

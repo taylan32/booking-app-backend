@@ -6,10 +6,15 @@ const {
 } = require("../scripts/utils/authHelper");
 const CustomError = require("../errors/CustomError");
 const httpStatus = require("http-status");
+const { findByEmail } = require("../services/UserService");
 
 const register = async (req, res, next) => {
   try {
     req.body.password = passwordToHash(req.body.password);
+    let user = findByEmail({ name: req.body.email });
+    if (user != null) {
+      return next(CustomError("Email already in use.", httpStatus.BAD_REQUEST));
+    }
     await createUser(req.body);
     return res.status(httpStatus.CREATED).json({
       success: true,
