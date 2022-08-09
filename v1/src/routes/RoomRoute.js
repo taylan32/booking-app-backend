@@ -33,7 +33,7 @@ router.route("/").get(authenticate, verifyAdmin, getRooms);
 router.route("/:id").get(authenticate, verifyAdmin, getRoom);
 router
   .route("/getroomsbyhotel/:id")
-  .get(authenticate, verifyAdmin, getRoomsByHotel);
+  .get(getRoomsByHotel);
 router
   .route("/getRooms/ByAvailable")
   .get(authenticate, verifyAdmin, getRoomsByIsAvailable);

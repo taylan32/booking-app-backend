@@ -18,7 +18,15 @@ const list = (where) => {
 };
 
 const findOne = (where) => {
-  return Hotel.findById(where);
+  return Hotel.findById(where)
+    .populate({
+      path: "city",
+      select: "name",
+    })
+    .populate({
+      path: "type",
+      select: "name",
+    });
 };
 
 const modify = (id, updateData) => {

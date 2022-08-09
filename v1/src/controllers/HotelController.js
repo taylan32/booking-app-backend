@@ -28,9 +28,10 @@ const createHotel = async (req, res, next) => {
 const getHotels = async (req, res, next) => {
   const { min, max, ...others } = req.query;
   try {
+    // gt: greater than gte:greater then or equal
     const hotels = await list({
       ...others,
-      cheapestPrice: { $gt: min || 1, $lt: max || 999 },
+      cheapestPrice: { $gte: min || 1, $lte: max || 999 },
     }).limit(req.query.limit);
     return res.status(httpStatus.OK).json({
       success: true,
